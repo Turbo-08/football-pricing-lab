@@ -6,6 +6,10 @@ fair_odds,
 expected_value
 )
 
+from tracker import save_prediction
+from datetime import datetime
+
+
 MIN_EV_THRESHOLD = 0.05
 
 def get_valid_odds(prompt):
@@ -121,3 +125,31 @@ else:
     print("Decision: NO BET")
 
 
+event = input ("Enter Match: ")
+bookmaker = input ("Enter bookmaker: ")
+stake = float(input("Enter Stake: "))
+
+created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+prediction = {
+    "sport": "Football",
+    "prediction_id": created_at,
+    "created_at": created_at,
+    "event": event,
+    "market_type": "1X2",
+    "subject": "",
+    "line": "",
+    "selection": selection,
+    "bookmaker": bookmaker,
+    "odds": selected_odds,
+    "model_probability": model_probability,
+    "ev": ev,
+    "stake": stake,
+    "result": "",
+    "profit_loss": "",
+    "model_version": "v0.1"
+}
+
+save_prediction(prediction)
+
+print ("Prediction saved.")

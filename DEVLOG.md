@@ -38,3 +38,34 @@
 - Design the bet tracker
 - Decide what data each prediction should store
 - Start saving predictions/results
+
+
+## Session 2 - 2026-09-17
+
+### Goal
+- Connect project to GitHub and push first commit
+- Design the bet tracker
+- Start saving predictions
+
+### Done
+- Connected local Git repository to GitHub
+- Pushed first commit to GitHub
+- Designed flexible prediction tracker structure
+- Added sport, event, market type, subject, line and selection fields
+- Created tracker.py
+- Created data/bets.csv
+- Connected main.py to tracker.py
+- Successfully saved a prediction to CSV
+
+### Learned
+- Difference between local Git commits and pushing to GitHub
+- How CSV files can store structured prediction data
+- Why generic tracker fields are better than separate columns for every market
+- How one prediction flows from main.py to tracker.py to bets.csv
+
+### Next Session
+- Improve tracker input validation
+- Separate predictions from actual bets
+- Add automatic prediction IDs
+- Add result and profit/loss updating
+- Consider adding a README
