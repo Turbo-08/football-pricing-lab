@@ -1,2 +1,4 @@
 sport   , prediction_id      , created_at         , event             , market_type, subject, line, selection, bookmaker, odds, model_probability, ev    , stake, result, profit_loss, model_version
 Football, 2026-09-18 17:41:29, 2026-09-18 17:41:29, Porto             , 1X2        ,        ,     , Away     , Bet365   ,  3.8,              0.12, -0.544,   5.0,       ,            , v0.1
+Football,2026-10-01 17:39:18,2026-10-01 17:39:18,Portugal vs Denmark,1X2,,,Home,Bet365,1.5,0.5,-0.25,0.0,,,v0.1
+Football,8c3ddff6-a937-4726-9652-004b73613262,2026-10-01 18:33:21,Portugal vs Wales,1X2,,,Home,bet365,1.5,0.75,0.125,10.0,,,v0.1

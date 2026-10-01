@@ -69,3 +69,30 @@
 - Add automatic prediction IDs
 - Add result and profit/loss updating
 - Consider adding a README
+
+## Session 3 - 2026-10-01
+
+### Goal
+- Separate predictions from actual bets
+- Add automatic prediction IDs
+- Add result and profit/loss tracking
+
+### Done
+- Improved stake input validation
+- Split predictions from actual bets
+- Added automatic UUID prediction IDs
+- Added result settlement
+- Added automatic profit/loss calculation
+- Created settle_bet.py
+
+### Learned
+- Why predictions and actual bets should be tracked separately
+- How UUIDs link the same prediction across files
+- How CSV rows can be updated by reading and rewriting the file
+- How bet profit/loss is calculated
+
+### Next Session
+- Improve result settlement so IDs are easier to select
+- Add tests for tracker functions
+- Add README
+- Start planning API integration and model inputs

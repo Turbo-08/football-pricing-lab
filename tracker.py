@@ -20,22 +20,63 @@ FIELDS = [
     "model_version"
 ]
 
-def save_prediction(prediction):
+def save_record(record, filename):
     data_folder = Path("data")
     data_folder.mkdir(exist_ok=True)
 
-    file_path = data_folder/ "bets.csv"
-
+    file_path = data_folder/ filename
     file_exists = file_path.exists()
 
     with open(file_path, "a", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=FIELDS)
+
         if not file_exists:
             writer.writeheader()
 
-        writer.writerow(prediction)
+        writer.writerow(record)
+
+def save_prediction(prediction):
+    save_record(prediction, "predictions.csv")
+
+
+def save_bet(bet):
+    save_record(bet, "bets.csv")
 
 
 
+def calculate_profit_loss(result, stake, odds):
+    if result == "Win":
+        return stake * (odds - 1)
 
-    
+    if result == "Loss":
+        return -stake
+
+    if result == "Void":
+        return 0
+
+    raise ValueError("Result must be Win, Loss or Void")
+
+def update_result(filename, prediction_id, result):
+    file_path = Path("data") / filename
+
+    rows = []
+
+    with open(file_path, "r", newline="", encoding="utf-8") as file:
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            if row["prediction_id"] == prediction_id:
+                stake = float(row["stake"])
+                odds = float(row["odds"])
+
+                row["result"] = result
+                row["profit_loss"] = calculate_profit_loss(
+                    result, stake, odds
+                )
+
+            rows.append(row)
+
+    with open(file_path, "w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=FIELDS)
+        writer.writeheader()
+        writer.writerows(rows)

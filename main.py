@@ -6,8 +6,13 @@ fair_odds,
 expected_value
 )
 
-from tracker import save_prediction
+from tracker import save_prediction, save_bet
 from datetime import datetime
+
+from uuid import uuid4
+
+prediction_id = str(uuid4())
+
 
 
 MIN_EV_THRESHOLD = 0.05
@@ -29,6 +34,20 @@ odds = {
     "Draw": get_valid_odds("Enter draw odds:"),
     "Away": get_valid_odds("Enter Away odds:")
 }
+
+def get_valid_stake(prompt):
+    while True:
+        try: 
+            stake = float(input(prompt))
+
+            if stake  >= 0:
+                return stake
+
+            print("Stake cannot be negative")
+
+        except ValueError:
+            print("Invalid input. Enter a number.")
+        
 
 probabilities = {}
 
@@ -127,13 +146,14 @@ else:
 
 event = input ("Enter Match: ")
 bookmaker = input ("Enter bookmaker: ")
-stake = float(input("Enter Stake: "))
+stake = get_valid_stake("Enter Stake: ")
+
 
 created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 prediction = {
     "sport": "Football",
-    "prediction_id": created_at,
+    "prediction_id": prediction_id,
     "created_at": created_at,
     "event": event,
     "market_type": "1X2",
@@ -151,5 +171,9 @@ prediction = {
 }
 
 save_prediction(prediction)
+
+15.
+if stake > 0:
+    save_bet(prediction)
 
 print ("Prediction saved.")
