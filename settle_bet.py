@@ -1,15 +1,46 @@
-from tracker import update_result
+from tracker import get_unsettled_bets, update_result
 
-prediction_id = input("Enter prediction ID:").strip()
+bets = get_unsettled_bets()
 
-while True:
-    result = input("Enter result (Win/Loss/void): ").strip().title()
+if len(bets) == 0:
+    print ("No unsettled bets")
 
-    if result in ["Win", "Loss", "Void"]:
-        break
+else:
+    print("\nUnsettled bets:")
 
-    print("Invalid result. Entre Win, Loss, or Void")
+    for index, bet in enumerate(bets, start=1):
+        print(
+           f"{index}. {bet['event']} | "
+            f"{bet['selection']} | "
+            f"@{bet['odds']} | "
+            f"Stake €{bet['stake']}" 
+        )
+    while True:
+        try:
+           choice = int(input("\nSelect bet number: "))
 
-    update_result("bets.csv", prediction_id, result)
+           if 1 <= choice <=len(bets):
+            break
 
-print("Bet result updated.")
+           print("Invalid selection.")
+
+        except ValueError:
+            print("Enter a number.")
+               
+    selected_bet = bets[choice -1 ]
+
+    while True:
+        result = input("Enter result (Win/Loss/Void): ").strip().title()
+
+        if result in ["Win", "Loss", "Void"]:
+            break
+
+        print("Invalid result.")
+
+    update_result(
+        "bets.csv",
+        selected_bet["prediction_id"],
+        result
+    )
+
+    print("Bet result updated.")

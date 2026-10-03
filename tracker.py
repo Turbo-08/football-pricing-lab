@@ -25,13 +25,13 @@ def save_record(record, filename):
     data_folder.mkdir(exist_ok=True)
 
     file_path = data_folder/ filename
-    file_exists = file_path.exists()
+    file_has_data = file_path.exists() and file_path.stat().st_size > 0
 
     with open(file_path, "a", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=FIELDS)
 
-        if not file_exists:
-            writer.writeheader()
+        if not file_has_data:
+             writer.writeheader()
 
         writer.writerow(record)
 
@@ -80,3 +80,17 @@ def update_result(filename, prediction_id, result):
         writer = csv.DictWriter(file, fieldnames=FIELDS)
         writer.writeheader()
         writer.writerows(rows)
+
+def get_unsettled_bets():
+    file_path = Path("data") / "bets.csv"
+
+    unsettled_bets = []
+
+    with open(file_path, "r", newline="", encoding="utf-8") as file:
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            if row.get("result", "") == "":
+                unsettled_bets.append(row)
+
+    return unsettled_bets 

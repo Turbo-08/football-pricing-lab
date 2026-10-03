@@ -96,3 +96,30 @@
 - Add tests for tracker functions
 - Add README
 - Start planning API integration and model inputs
+
+## Session 4 - 2026-10-03
+
+### Goal
+- Improve bet settlement
+- Add tracker tests
+- Create project README
+
+### Done
+- Improved bet settlement with numbered bet selection
+- Added unsettled bet filtering
+- Fixed CSV header handling
+- Added automated tracker tests
+- Created README.md
+
+### Learned
+- How enumerate() can create numbered selections
+- How to filter unsettled bets from CSV data
+- Why test data can break when the CSV schema changes
+- How temporary folders keep automated tests away from real data
+- How README documentation helps explain the project
+
+### Next Session
+- Plan API integration
+- Decide what data the first prediction model needs
+- Compare possible football data/odds APIs
+

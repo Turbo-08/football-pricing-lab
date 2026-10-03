@@ -1,2 +1,4 @@
 sport,prediction_id,created_at,event,market_type,subject,line,selection,bookmaker,odds,model_probability,ev,stake,result,profit_loss,model_version
 Football,8c3ddff6-a937-4726-9652-004b73613262,2026-10-01 18:33:21,Portugal vs Wales,1X2,,,Home,bet365,1.5,0.75,0.125,10.0,,,v0.1
+Football,acacd80c-19cc-4c5c-8ee5-54b334b1e6fc,2026-10-03 17:27:16,Portugal vs Spain,1X2,,,Home,Bet365,1.8,0.6,0.08000000000000007,5.0,,,v0.1
+Football,eefd1353-b160-442f-9eae-e9e8303fc588,2026-10-03 17:40:38,Portugal vs Spain,1X2,,,Home,Bet365,1.8,0.6,0.08000000000000007,5.0,,,v0.1
