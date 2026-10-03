@@ -172,7 +172,7 @@ prediction = {
 
 save_prediction(prediction)
 
-15.
+
 if stake > 0:
     save_bet(prediction)
 
